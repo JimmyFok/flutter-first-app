@@ -7,9 +7,18 @@ import 'package:flutter/material.dart'; // 引入material的设计风格（Googl
  class App extends StatelessWidget{
    @override   // 表示这个方法是覆盖父类build的，因为这行以下都是输入build再tab创建的
      Widget build(BuildContext context) {  // 返回类型是Widget 方法名build
-       // TODO: implement build
+       
        return MaterialApp(
-         home: Hello()         
+         home: Scaffold(   // 主要是标题之类的部件
+           appBar: AppBar(
+             title: Text('JIMMYFOK'),
+             elevation: 1.0,  // 阴影
+           ),
+           body: Hello() 
+         ), 
+         theme: ThemeData(   // 设置主题颜色
+           primarySwatch: Colors.yellow 
+         )
        );
      }
  }
