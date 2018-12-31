@@ -12,7 +12,7 @@ import 'components/List_Component.dart';
        
        return MaterialApp(
          debugShowCheckedModeBanner: false,  // 界面debug没了
-         home: List_Component(), 
+         home: Home(),  //List_Component(), 
          theme: ThemeData(   // 设置主题颜色
            primarySwatch: Colors.yellow 
          )
@@ -23,7 +23,33 @@ import 'components/List_Component.dart';
  class Home extends StatelessWidget{
    @override
      Widget build(BuildContext context) {       
-       return null;
+       return Scaffold(
+         appBar: AppBar(
+           // 左边，用IconButton来弄
+           leading: IconButton(
+             icon: Icon(Icons.menu),
+             tooltip: 'Navigation',
+             onPressed: ()=>debugPrint('导航按钮被点击。'),
+           ),
+           // 中间标题
+           title: Text('jimmyFok'),
+           // 右边actions
+           actions: <Widget>[  // 这里是数组所以可以是一组按钮
+             IconButton(
+              icon: Icon(Icons.search),
+              tooltip: 'Search',
+              onPressed: ()=>debugPrint('搜索按钮被点击。'),
+            ),
+            IconButton(
+              icon: Icon(Icons.search),
+              tooltip: 'Search',
+              onPressed: ()=>debugPrint('搜索按钮被点击。'),
+            )
+           ],
+           elevation: 0.0,
+         ),
+         body: null,
+       );
      }
  }
  
