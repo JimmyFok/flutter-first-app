@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart'; // 引入material的设计风格（Google的，详情可去material.io了解）
 // import 'components/Hello_Component.dart';
-import 'components/List_Component.dart';
+// import 'components/List_Component.dart';
+import 'components/Drawer_Component.dart';
 
 // void表示不返回值，是后端语言常用，在函数前就设定好函数返回值的类型
 void main() => runApp(App()); // 需要实例化，因为实例化就会build()
@@ -74,35 +75,7 @@ class Home extends StatelessWidget {
             Icon(Icons.credit_card, size: 128.0, color: Colors.black12),
           ],
         ),
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              // 抽屉头部
-              DrawerHeader(
-                child: Text('header'.toUpperCase()),
-                decoration: BoxDecoration(  // 盒子装饰
-                  color: Colors.grey[100],  // 
-                ),
-              ),
-              ListTile(
-                title: Text('信息',textAlign: TextAlign.right,),
-                trailing: Icon(Icons.message, color:Colors.black12, size:22.0),  // 这里是致右的部分，左边用leading
-                onTap: () => Navigator.pop(context), // 这里是点击返回到context层，来达到关闭抽屉效果
-              ),
-              ListTile(
-                title: Text('收藏',textAlign: TextAlign.right,),
-                trailing: Icon(Icons.favorite, color:Colors.black12, size:22.0),  // 这里是致右的部分
-                onTap: () => Navigator.pop(context),
-              ),
-              ListTile(
-                title: Text('设置',textAlign: TextAlign.right,),
-                trailing: Icon(Icons.settings, color:Colors.black12, size:22.0),  // 这里是致右的部分
-                onTap: () => Navigator.pop(context),
-              ),
-            ],
-          ),
-        ),
+        drawer: Drawer_Component(),
         endDrawer: Text('这是右边抽屉'),  // 右抽屉
       ) 
     );
