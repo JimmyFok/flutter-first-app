@@ -31,11 +31,14 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
           // 左边，用IconButton来弄
-          leading: IconButton(
-            icon: Icon(Icons.menu),
-            tooltip: 'Navigation',
-            onPressed: () => debugPrint('导航按钮被点击。'),
-          ),
+          // leading: IconButton(
+          //   icon: Icon(Icons.menu),
+          //   tooltip: 'Navigation',
+          //   onPressed: () => debugPrint('导航按钮被点击。'),
+          // ),  
+          
+          // 这里因为是手动加的，所以没有自动加入抽屉的那个图标的效果，所以把它注销就有了
+
           // 中间标题
           title: Text('jimmyFok'),
           // 右边actions
@@ -71,16 +74,35 @@ class Home extends StatelessWidget {
             Icon(Icons.credit_card, size: 128.0, color: Colors.black12),
           ],
         ),
-        drawer: Container(
-          color: Colors.white,
-          padding: EdgeInsets.all(8.0),  // Edge是边缘的意思
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
             children: <Widget>[
-              Text('This is drawer')
+              // 抽屉头部
+              DrawerHeader(
+                child: Text('header'.toUpperCase()),
+                decoration: BoxDecoration(  // 盒子装饰
+                  color: Colors.grey[100],  // 
+                ),
+              ),
+              ListTile(
+                title: Text('信息',textAlign: TextAlign.right,),
+                trailing: Icon(Icons.message, color:Colors.black12, size:22.0),  // 这里是致右的部分，左边用leading
+                onTap: () => Navigator.pop(context), // 这里是点击返回到context层，来达到关闭抽屉效果
+              ),
+              ListTile(
+                title: Text('收藏',textAlign: TextAlign.right,),
+                trailing: Icon(Icons.favorite, color:Colors.black12, size:22.0),  // 这里是致右的部分
+                onTap: () => Navigator.pop(context),
+              ),
+              ListTile(
+                title: Text('设置',textAlign: TextAlign.right,),
+                trailing: Icon(Icons.settings, color:Colors.black12, size:22.0),  // 这里是致右的部分
+                onTap: () => Navigator.pop(context),
+              ),
             ],
-          ) 
-        ),  // 左抽屉
+          ),
+        ),
         endDrawer: Text('这是右边抽屉'),  // 右抽屉
       ) 
     );
