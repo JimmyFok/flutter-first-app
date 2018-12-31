@@ -3,53 +3,86 @@ import 'package:flutter/material.dart'; // 引入material的设计风格（Googl
 import 'components/List_Component.dart';
 
 // void表示不返回值，是后端语言常用，在函数前就设定好函数返回值的类型
- void main() => runApp( App() ); // 需要实例化，因为实例化就会build()
+void main() => runApp(App()); // 需要实例化，因为实例化就会build()
 
 // 创建小部件。小部件需要有数据的就继承StatefulWidget，不需要的就继承StatelessWidget。从字面意思也理解了
- class App extends StatelessWidget{
-   @override   // 表示这个方法是覆盖父类build的，因为这行以下都是输入build再tab创建的
-     Widget build(BuildContext context) {  // 返回类型是Widget 方法名build
-       
-       return MaterialApp(
-         debugShowCheckedModeBanner: false,  // 界面debug没了
-         home: Home(),  //List_Component(), 
-         theme: ThemeData(   // 设置主题颜色
-           primarySwatch: Colors.yellow 
-         )
-       );
-     }
- }
+class App extends StatelessWidget {
+  @override // 表示这个方法是覆盖父类build的，因为这行以下都是输入build再tab创建的
+  Widget build(BuildContext context) { // 返回类型是Widget 方法名build
 
- class Home extends StatelessWidget{
-   @override
-     Widget build(BuildContext context) {       
-       return Scaffold(
-         appBar: AppBar(
-           // 左边，用IconButton来弄
-           leading: IconButton(
-             icon: Icon(Icons.menu),
-             tooltip: 'Navigation',
-             onPressed: ()=>debugPrint('导航按钮被点击。'),
-           ),
-           // 中间标题
-           title: Text('jimmyFok'),
-           // 右边actions
-           actions: <Widget>[  // 这里是数组所以可以是一组按钮
-             IconButton(
+    return MaterialApp(
+      debugShowCheckedModeBanner: false, // 界面debug没了
+      home: Home(), //List_Component(), 
+      theme: ThemeData( // 设置主题颜色
+        primarySwatch: Colors.yellow,
+        highlightColor: Color.fromRGBO(255, 255, 255, 0.5),   // 高梁颜色
+        splashColor: Colors.white70   // 水波纹颜色
+      )
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        backgroundColor: Colors.grey[100],
+        appBar: AppBar(
+          // 左边，用IconButton来弄
+          leading: IconButton(
+            icon: Icon(Icons.menu),
+            tooltip: 'Navigation',
+            onPressed: () => debugPrint('导航按钮被点击。'),
+          ),
+          // 中间标题
+          title: Text('jimmyFok'),
+          // 右边actions
+          actions: < Widget > [ // 这里是数组所以可以是一组
+            IconButton(
               icon: Icon(Icons.search),
               tooltip: 'Search',
-              onPressed: ()=>debugPrint('搜索按钮被点击。'),
+              onPressed: () => debugPrint('搜索按钮被点击。'),
             ),
             IconButton(
               icon: Icon(Icons.search),
               tooltip: 'Search',
-              onPressed: ()=>debugPrint('搜索按钮被点击。'),
+              onPressed: () => debugPrint('搜索按钮被点击。'),
             )
-           ],
-           elevation: 0.0,
-         ),
-         body: null,
-       );
-     }
- }
- 
+          ],
+          elevation: 0.0,
+          bottom: TabBar(  // 这里开始就tab组件了，问题来了，对应的tab的内容写哪里，就在body处写
+            unselectedLabelColor: Colors.black38,  // 设置没选择的颜色
+            indicatorColor: Colors.black54,
+            indicatorSize: TabBarIndicatorSize.label,  // 设置长度于tab文本一样长
+            indicatorWeight: 4.0,    // 设置厚度
+            tabs: <Widget>[ 
+              Tab(icon: Icon(Icons.local_florist)),  
+              Tab(icon: Icon(Icons.camera)),
+              Tab(icon: Icon(Icons.credit_card)),              
+            ],  
+          ),
+        ),
+        body: TabBarView(  // 与TabBar一一对应就可以
+          children: <Widget>[
+            Icon(Icons.local_florist, size: 128.0, color: Colors.black12), // black12是半透明度为12%
+            Icon(Icons.camera, size: 128.0, color: Colors.black12),
+            Icon(Icons.credit_card, size: 128.0, color: Colors.black12),
+          ],
+        ),
+        drawer: Container(
+          color: Colors.white,
+          padding: EdgeInsets.all(8.0),  // Edge是边缘的意思
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text('This is drawer')
+            ],
+          ) 
+        ),  // 左抽屉
+        endDrawer: Text('这是右边抽屉'),  // 右抽屉
+      ) 
+    );
+  }
+}
