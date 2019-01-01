@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart'; // 引入material的设计风格（Google的，详情可去material.io了解）
-// import 'components/Hello_Component.dart';
-// import 'components/List_Component.dart';
+import 'components/Hello_Component.dart';
+import 'components/List_Component.dart';
 import 'components/Drawer_Component.dart';
+import 'components/BottomNavigationBar_Component.dart';
 
 // void表示不返回值，是后端语言常用，在函数前就设定好函数返回值的类型
 void main() => runApp(App()); // 需要实例化，因为实例化就会build()
@@ -15,8 +16,8 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false, // 界面debug没了
       home: Home(), //List_Component(), 
       theme: ThemeData( // 设置主题颜色
-        primarySwatch: Colors.yellow,
-        highlightColor: Color.fromRGBO(255, 255, 255, 0.5),   // 高梁颜色
+        primarySwatch: Colors.deepPurple,
+        highlightColor: Color.fromRGBO(255, 255, 255, 0.5),   // 高亮颜色
         splashColor: Colors.white70   // 水波纹颜色
       )
     );
@@ -24,22 +25,14 @@ class App extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
         backgroundColor: Colors.grey[100],
-        appBar: AppBar(
-          // 左边，用IconButton来弄
-          // leading: IconButton(
-          //   icon: Icon(Icons.menu),
-          //   tooltip: 'Navigation',
-          //   onPressed: () => debugPrint('导航按钮被点击。'),
-          // ),  
-          
-          // 这里因为是手动加的，所以没有自动加入抽屉的那个图标的效果，所以把它注销就有了
-
+        appBar: AppBar(          
           // 中间标题
           title: Text('jimmyFok'),
           // 右边actions
@@ -70,13 +63,16 @@ class Home extends StatelessWidget {
         ),
         body: TabBarView(  // 与TabBar一一对应就可以
           children: <Widget>[
-            Icon(Icons.local_florist, size: 128.0, color: Colors.black12), // black12是半透明度为12%
-            Icon(Icons.camera, size: 128.0, color: Colors.black12),
+            List_Component(), 
+            Hello_Component(),
             Icon(Icons.credit_card, size: 128.0, color: Colors.black12),
           ],
         ),
         drawer: Drawer_Component(),
         endDrawer: Text('这是右边抽屉'),  // 右抽屉
+        // 底部菜单栏
+        bottomNavigationBar: BottomNavigationBar_Component(),
+       
       ) 
     );
   }

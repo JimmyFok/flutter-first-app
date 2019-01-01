@@ -30,10 +30,10 @@ class List_Component extends StatelessWidget{
       Widget build(BuildContext context) {
         // TODO: implement build
         return Scaffold(   // 主要是标题之类的部件，算是关于app结构的组件
-           appBar: AppBar(
-             title: Text('JIMMYFOK'),
-             elevation: 1.0,  // 阴影
-           ),
+          //  appBar: AppBar(
+          //    title: Text('JIMMYFOK'),
+          //    elevation: 1.0,  // 阴影
+          //  ),
            body: ListView.builder(  // 这里是ListView的创建
              itemCount: posts.length,
              itemBuilder: _listItemBuilder,
