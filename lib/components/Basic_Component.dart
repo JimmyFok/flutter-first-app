@@ -29,26 +29,39 @@ class Basic_Component extends StatelessWidget{
    * [RichText] 行内及行内样式，就是行内多个文字样式混合的
    */
 
+  // @override
+  //   Widget build(BuildContext context) {
+  //     return RichText(
+  //       text: TextSpan(  // 需要显示的文字及文字样式
+  //           text: 'JimmyFok',
+  //           style: TextStyle(
+  //             fontSize: 30.0,
+  //             color: Colors.deepOrange,
+  //             fontWeight: FontWeight.bold,
+  //             fontStyle: FontStyle.italic
+  //           ),
+  //           children: [
+  //             TextSpan(
+  //               text: 'Home',
+  //               style: TextStyle(
+  //                 fontSize: 60.0,
+  //               )
+  //             )
+  //           ]
+  //       ),
+  //     );
+  //   }
+
+  // [Container]
   @override
     Widget build(BuildContext context) {
-      return RichText(
-        text: TextSpan(  // 需要显示的文字及文字样式
-            text: 'JimmyFok',
-            style: TextStyle(
-              fontSize: 30.0,
-              color: Colors.deepOrange,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic
-            ),
-            children: [
-              TextSpan(
-                text: 'Home',
-                style: TextStyle(
-                  fontSize: 60.0,
-                )
-              )
-            ]
-        ),
+      return Container(
+        color: Colors.grey[100],
+        child: Row(
+          children: <Widget>[
+            
+          ],
+        )
       );
     }
 }
