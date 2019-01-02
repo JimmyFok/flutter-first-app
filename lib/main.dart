@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart'; // 引入material的设计风格（Google的，详情可去material.io了解）
-import 'components/Hello_Component.dart';
+import 'components/Basic_Component.dart';
 import 'components/List_Component.dart';
 import 'components/Drawer_Component.dart';
 import 'components/BottomNavigationBar_Component.dart';
@@ -64,7 +64,7 @@ class Home extends StatelessWidget {
         body: TabBarView(  // 与TabBar一一对应就可以
           children: <Widget>[
             List_Component(), 
-            Hello_Component(),
+            Basic_Component(),
             Icon(Icons.credit_card, size: 128.0, color: Colors.black12),
           ],
         ),
