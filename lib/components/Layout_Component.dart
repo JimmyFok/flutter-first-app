@@ -12,60 +12,17 @@ class Layout_Component extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center, // justify-content
 
         children: <Widget>[
-          // SizedBox 可以做间隔，用来设定大小的，Container暂时没发现可以
-          Stack( // 这个就是栈堆的堆，所以其SizedBox会叠一起
-            alignment: Alignment.topCenter,
-            children: <Widget>[
-              SizedBox(
-                width: 300.0,
-                height: 200.0,
-                child: Container(
-                    // alignment: Alignment(-1.0, 1.0),  // 1.0就是100%的意思
-                    alignment: Alignment.bottomRight,
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(23, 154, 255, 1.0),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                    child: Icon(Icons.ac_unit, color: Colors.white, size: 32.0)),
+            // AspectRatioDemo()
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: 200.0,
+                maxWidth: 10.0
               ),
-              SizedBox(
-                height: 30.0,
-              ),
-              SizedBox(
-                width: 100.0,
-                height: 100.0,
-                child: Container(
-                    decoration: BoxDecoration(
-                      color: Color.fromRGBO(3, 54, 255, 1.0),
-                      borderRadius: BorderRadius.circular(8.0),
-                      gradient: RadialGradient(
-                        colors:[
-                          Color.fromRGBO(7, 102, 255, 1.0),
-                          Color.fromRGBO(3, 54, 255, 1.0),
-                        ]
-                      )
-                    ),
-                    child:
-                        Icon(Icons.brightness_2, color: Colors.white, size: 32.0)),
-              ),
-              // 定位的小部件
-              Positioned(
-                left: 12.0,
-                top: 12.0,
-                width: 12.0,
-                height: 12.0,
-                child: Icon(Icons.ac_unit, color: Colors.white, size: 16.0),
-              ),
-              Positioned(
-                right: 12.0,
-                top: 12.0,
-                width: 12.0,
-                height: 12.0,
-                child: Icon(Icons.ac_unit, color: Colors.white, size: 14.0),
+              child: Container(
+                color: Colors.yellow
               )
-            ],
-          )
-        ],
+            )
+          ],
       ),
     );
   }
@@ -90,5 +47,73 @@ class IconBadge extends StatelessWidget {
         height: size + 60,
         color: Color.fromRGBO(3, 54, 255, 1.0) // 容器颜色
         );
+  }
+}
+
+class StackDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      // 这个就是栈堆的堆，所以其SizedBox会叠一起
+      alignment: Alignment.topCenter,
+      children: <Widget>[
+        SizedBox(
+          width: 300.0,
+          height: 200.0,
+          child: Container(
+              // alignment: Alignment(-1.0, 1.0),  // 1.0就是100%的意思
+              alignment: Alignment.bottomRight,
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(23, 154, 255, 1.0),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Icon(Icons.ac_unit, color: Colors.white, size: 32.0)),
+        ),
+        SizedBox(
+          height: 30.0,
+        ),
+        SizedBox(
+          width: 100.0,
+          height: 100.0,
+          child: Container(
+              decoration: BoxDecoration(
+                  color: Color.fromRGBO(3, 54, 255, 1.0),
+                  borderRadius: BorderRadius.circular(8.0),
+                  gradient: RadialGradient(colors: [
+                    Color.fromRGBO(7, 102, 255, 1.0),
+                    Color.fromRGBO(3, 54, 255, 1.0),
+                  ])),
+              child: Icon(Icons.brightness_2, color: Colors.white, size: 32.0)),
+        ),
+        // 定位的小部件
+        Positioned(
+          left: 12.0,
+          top: 12.0,
+          width: 12.0,
+          height: 12.0,
+          child: Icon(Icons.ac_unit, color: Colors.white, size: 16.0),
+        ),
+        Positioned(
+          right: 12.0,
+          top: 12.0,
+          width: 12.0,
+          height: 12.0,
+          child: Icon(Icons.ac_unit, color: Colors.white, size: 14.0),
+        )
+      ],
+    );
+  }
+}
+
+// AspectRatio是保证比例的部件
+class AspectRatioDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return AspectRatio(
+      aspectRatio: 16.0 / 9.0,
+      child: Container(
+        color: Colors.yellow
+      )
+    );
   }
 }
