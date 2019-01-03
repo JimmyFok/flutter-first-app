@@ -6,14 +6,37 @@ class Layout_Component extends StatelessWidget {
     return Container(
       child: Column(  // 就是跟flexbox类似，这里就是设定主轴方向的
         mainAxisSize: MainAxisSize.min,  // 这个没搞懂是什么, 可能跟flex-grow类似
-        mainAxisAlignment: MainAxisAlignment.spaceAround,  // 类似align-items
+        mainAxisAlignment: MainAxisAlignment.start,  // 类似align-items
 
         crossAxisAlignment: CrossAxisAlignment.center,  // justify-content        
 
         children: <Widget>[
-          IconBadge(Icons.accessible),
-          IconBadge(Icons.alarm_add,size:60.0),
-          IconBadge(Icons.crop_7_5) 
+          // SizedBox 可以做间隔，用来设定大小的，Container暂时没发现可以
+          SizedBox(
+            width: 300.0,
+            height: 200.0,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(3, 54, 255, 1.0),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Icon(Icons.ac_unit,color:Colors.white,size:32.0)
+            ),
+          ),
+          SizedBox(
+            height: 30.0,
+          ),
+          SizedBox(
+            width: 100.0,
+            height: 100.0,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color.fromRGBO(3, 54, 255, 1.0),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Icon(Icons.ac_unit,color:Colors.white,size:32.0)
+            ),
+          )
         ],
       ),
     );
