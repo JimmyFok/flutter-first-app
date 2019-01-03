@@ -3,6 +3,7 @@ import 'components/Basic_Component.dart';
 import 'components/List_Component.dart';
 import 'components/Drawer_Component.dart';
 import 'components/BottomNavigationBar_Component.dart';
+import 'components/Layout_Component.dart';
 
 // void表示不返回值，是后端语言常用，在函数前就设定好函数返回值的类型
 void main() => runApp(App()); // 需要实例化，因为实例化就会build()
@@ -65,7 +66,8 @@ class Home extends StatelessWidget {
           children: <Widget>[
             List_Component(), 
             Basic_Component(),
-            Icon(Icons.credit_card, size: 128.0, color: Colors.black12),
+            Layout_Component(),
+            // Icon(Icons.credit_card, size: 128.0, color: Colors.black12),
           ],
         ),
         drawer: Drawer_Component(),
