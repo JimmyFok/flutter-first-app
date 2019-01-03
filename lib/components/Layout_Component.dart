@@ -16,6 +16,8 @@ class Layout_Component extends StatelessWidget {
             width: 300.0,
             height: 200.0,
             child: Container(
+              // alignment: Alignment(-1.0, 1.0),  // 1.0就是100%的意思
+              alignment: Alignment.bottomRight,
               decoration: BoxDecoration(
                 color: Color.fromRGBO(3, 54, 255, 1.0),
                 borderRadius: BorderRadius.circular(8.0),
