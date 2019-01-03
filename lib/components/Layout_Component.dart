@@ -3,12 +3,20 @@ import 'package:flutter/material.dart';
 class Layout_Component extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[ // 这个今天请教了同事，直接告诉他这个是范型，就是严格的JAVA的强类型时需要一个站位变量一样的东西，而不需要强制设定类型，而在编译时才确定的类型。
-                          // 所以这里意思应该是代表这里放的都是Widget，Widget就是为了让我们了解对应的数据类型的。
-        IconBadge(Icons.access_time, size:80.0)
-      ],
-    ); 
+    return Container(
+      child: Column(  // 就是跟flexbox类似，这里就是设定主轴方向的
+        mainAxisSize: MainAxisSize.min,  // 这个没搞懂是什么, 可能跟flex-grow类似
+        mainAxisAlignment: MainAxisAlignment.spaceAround,  // 类似align-items
+
+        crossAxisAlignment: CrossAxisAlignment.center,  // justify-content        
+
+        children: <Widget>[
+          IconBadge(Icons.accessible),
+          IconBadge(Icons.alarm_add,size:60.0),
+          IconBadge(Icons.crop_7_5) 
+        ],
+      ),
+    );
   }
 }
 
