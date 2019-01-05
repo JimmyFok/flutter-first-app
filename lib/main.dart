@@ -4,6 +4,7 @@ import 'components/List_Component.dart';
 import 'components/Drawer_Component.dart';
 import 'components/BottomNavigationBar_Component.dart';
 import 'components/Layout_Component.dart';
+import 'components/Routes_Component.dart';
 
 // void表示不返回值，是后端语言常用，在函数前就设定好函数返回值的类型
 void main() => runApp(App()); // 需要实例化，因为实例化就会build()
@@ -30,7 +31,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(          
@@ -67,6 +68,7 @@ class Home extends StatelessWidget {
             List_Component(), 
             Basic_Component(),
             Layout_Component(),
+            Routes_Component()
             // Icon(Icons.credit_card, size: 128.0, color: Colors.black12),
           ],
         ),
