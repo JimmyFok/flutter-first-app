@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './post_show.dart';
 import '../model/post.dart';
 
 class List_Component extends StatelessWidget {
@@ -41,7 +42,12 @@ class List_Component extends StatelessWidget {
                 splashColor: Colors.white.withOpacity(0.3),
                 highlightColor: Colors.white.withOpacity(0.1),
                 onTap: (){
-                  debugPrint('Tap'); // 类似console.log
+                  // debugPrint('Tap'); // 类似console.log
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => PostShow(post: posts[index])
+                    )
+                  );
                 },
               ))),
         ]),
