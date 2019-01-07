@@ -16,7 +16,16 @@ class App extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false, // 界面debug没了
-      home: Home(), //List_Component(), 
+      // home: Routes_Component(), //List_Component(), 
+      
+      // 设定初始路由（所以上面home不用了）
+      initialRoute: '/',  // 默认路由地址
+      // 设定路由
+      routes:{
+        '/': (context) => Routes_Component(),
+        '/about': (context) => Page(title: "About")
+      },
+
       theme: ThemeData( // 设置主题颜色
         primarySwatch: Colors.deepPurple,
         highlightColor: Color.fromRGBO(255, 255, 255, 0.5),   // 高亮颜色
@@ -59,7 +68,8 @@ class Home extends StatelessWidget {
             tabs: <Widget>[ 
               Tab(icon: Icon(Icons.local_florist)),  
               Tab(icon: Icon(Icons.camera)),
-              Tab(icon: Icon(Icons.credit_card)),              
+              Tab(icon: Icon(Icons.credit_card)),
+              Tab(icon: Icon(Icons.credit_card)),                
             ],  
           ),
         ),
