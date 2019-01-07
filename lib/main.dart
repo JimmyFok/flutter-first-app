@@ -22,7 +22,7 @@ class App extends StatelessWidget {
       initialRoute: '/',  // 默认路由地址
       // 设定路由
       routes:{
-        '/': (context) => Routes_Component(),
+        '/': (context) => Home(),
         '/about': (context) => Page(title: "About")
       },
 
