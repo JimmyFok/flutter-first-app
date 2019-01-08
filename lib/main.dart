@@ -5,6 +5,7 @@ import 'components/Drawer_Component.dart';
 import 'components/BottomNavigationBar_Component.dart';
 import 'components/Layout_Component.dart';
 import 'components/Routes_Component.dart';
+import 'components/Form_Component.dart';
 
 // void表示不返回值，是后端语言常用，在函数前就设定好函数返回值的类型
 void main() => runApp(App()); // 需要实例化，因为实例化就会build()
@@ -19,17 +20,19 @@ class App extends StatelessWidget {
       // home: Routes_Component(), //List_Component(), 
       
       // 设定初始路由（所以上面home不用了）
-      initialRoute: '/',  // 默认路由地址
+      initialRoute: '/form',  // 默认路由地址
       // 设定路由
       routes:{
         '/': (context) => Home(),
-        '/about': (context) => Page(title: "About")
+        '/about': (context) => Page(title: "About"),
+        '/form': (context) => Form_Component(),
       },
 
       theme: ThemeData( // 设置主题颜色
         primarySwatch: Colors.deepPurple,
         highlightColor: Color.fromRGBO(255, 255, 255, 0.5),   // 高亮颜色
-        splashColor: Colors.white70   // 水波纹颜色
+        splashColor: Colors.white70,   // 水波纹颜色
+        accentColor: Colors.blueAccent
       )
     );
   }
